@@ -1,0 +1,11 @@
+.title{
+    position: relative;
+    top: 8px;
+}
+
+.jumbo {
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    width: auto;
+}
