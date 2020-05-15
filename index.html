@@ -1,11 +1,120 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yo</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
-    
+    <header class="jumbo">
+        <h1 class="text-center">
+            <div class="title">Eater</div>
+        </h1>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 left">
+                <h6 class="search-for-recipe">Search for a Recipe:</h6>
+                <form>
+                    <div class="input-group">
+                        <input id="recipe-value" type="text" placeholder=""
+                            class="form-control">
+                        <div class="input-group-btn">
+                            <button id="search-btn" class="btn btn-primary"
+                                type="submit">
+                                <span
+                                    class="glyphicon glyphicon-name">Search</span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <br>
+                <h6 class="city">Search by Ingredients:</h6>
+                <form>
+                    <div class="input-group">
+                        <input id="ingredients-value" type="text" placeholder=""
+                            class="form-control">
+                        <div class="input-group-btn">
+                            <button id="search-btn" class="btn btn-primary"
+                                type="submit">
+                                <span
+                                    class="glyphicon glyphicon-name">Search</span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <br>
+                <h6 class="enter-calories">Indicate the Calorie Amount</h6>
+                <div>
+                    <label for="customRange1">Example range</label>
+                    <input type="range" class="custom-range" id="calorie-input">
+                </div>
+                <div id="stored-recipies"></div>
+            </div>
+
+
+            <div class="col-md-8">
+                <div class="row result">
+                    <div class="card-deck">
+                        <div class="card">
+                            <img src="..." class="card-img-top recipe-image" alt="...">
+                            <div id="option-1" class="card-body">
+                                <h5 class="card-title recipe-title">Card title</h5>
+                                <p class="card-text recipe-description">Some quick example text to
+                                    build on the card title and make up the bulk
+                                    of the card's content.</p>
+                                <p class="calorie-amount"></p>
+                                <a href="#" class="btn btn-primary recipe-link">Get Recipe!</a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src="..." class="card-img-top recipe-image" alt="...">
+                            <div id="option-2" class="card-body">
+                                <h5 class="card-title recipe-title">Card title</h5>
+                                <p class="card-text recipe-description">Some quick example text to
+                                    build on the card title and make up the bulk
+                                    of the card's content.</p>
+                                <p class="calorie-amount"></p>
+                                <a href="#" class="btn btn-primary recipe-link">Get Recipe!</a>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="card">
+                            <img src="..." class="card-img-top recipe-image" alt="...">
+                            <div id="option-1" class="card-body">
+                                <h5 class="card-title recipe-title">Card title</h5>
+                                <p class="card-text recipe-description">Some quick example text to
+                                    build on the card title and make up the bulk
+                                    of the card's content.</p>
+                                <p class="calorie-amount"></p>
+                                <a href="#" class="btn btn-primary recipe-link">Get Recipe!</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+                    <script
+                        src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+                    <script src="script.js"></script>
 </body>
+
 </html>
