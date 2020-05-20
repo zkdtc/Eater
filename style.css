@@ -1,0 +1,53 @@
+h1 {
+    background: rgba(197, 77, 21, 0.966);
+    color: white;
+    height: 65px;
+    margin-bottom: 0;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    font-weight: bolder;
+    border-top: solid rgba(196, 3, 3, 0.479);
+    border-bottom: solid rgba(196, 3, 3, 0.479);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.title{
+    position: relative;
+    bottom: 6px;
+}
+
+.jumbo {
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    width: auto;
+}
+
+.screen-width {
+    margin-right: 0;
+    margin-top: 57px;
+
+}
+.left {
+    margin-top: 30px;
+    margin-right: 0;
+    padding-right: 0;
+}
+
+.slide {
+    width: 300px;
+}
+
+.button {
+    background: rgba(209, 74, 12, 0.966);
+}
+
+#use-weather {
+    margin-left: 10px;
+    background: red;
+}
+
+.hide {
+    display: none;
+}
+
