@@ -58,7 +58,7 @@ $(document).ready(function () {
         var temp = response.main.temp;
         var feelsLikeTemp = response.main.feels_like;
         var heading = $('.weather-heading');
-        var weatherRecipeDiv = $('weather-div');
+        var weatherRecipeDiv = $('.weather-div');
         var iconTag = $('<img>');
         var iconCode = response.weather[0].icon;
         var icon = iconTag.attr('src', 'http://openweathermap.org/img/wn/' + iconCode + '@2x.png');

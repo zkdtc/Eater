@@ -51,3 +51,6 @@ h1 {
     display: none;
 }
 
+.stored {
+    display: block;
+}
