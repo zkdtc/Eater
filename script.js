@@ -139,4 +139,50 @@ $(document).ready(function () {
     });
   }
 
+
+  var clicky = document.querySelector("#search-btn1")
+  var searches = document.querySelector("#recipe-value")
+  var storedKeywords = document.querySelector(".stored-keywords")
+  clicky.addEventListener("click", recentSearchList)
+
+
+
+  function recentSearchList(){
+    var searchString = searches.value
+    
+    let recentItems = localStorage.getItem("recentItems")
+    if (!recentItems) {
+      recentItems = []
+    }
+    else {
+      recentItems = JSON.parse(recentItems)
+    }
+
+    recentItems.push(searchString)
+    while (recentItems.length > 10) {
+      recentItems.shift()
+    }
+    
+    localStorage.setItem("recentItems", JSON.stringify(recentItems))
+    updateRecentSearches()
+  }
+
+  function updateRecentSearches() {
+    storedKeywords.innerHTML = ""
+    let recentItems = localStorage.getItem("recentItems")
+    if (!recentItems){
+      return
+    }
+    recentItems = JSON.parse(recentItems)
+    for (let index = 0; index < recentItems.length; index++) {
+      const element = recentItems[index];
+      var button = document.createElement("button")
+      button.textContent = element
+      var br = document.createElement("br")
+      button.setAttribute("class", "btn btn-danger button m-2")
+      storedKeywords.prepend(br)
+      storedKeywords.prepend(button)
+    }
+  }
+  updateRecentSearches()
 });
