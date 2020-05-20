@@ -54,3 +54,10 @@ h1 {
 .stored {
     display: block;
 }
+
+.recipe-image {
+    float: left;
+}
+.card-body {
+    float: left;
+}
