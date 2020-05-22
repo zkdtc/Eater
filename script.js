@@ -44,13 +44,15 @@ function retreiveRecipie() {
 
 
     for (i = 0; i < 3; i++) {
-      vindex=Math.floor(Math.random()*response.results.length);
+      index=Math.floor(Math.random()*response.results.length);
       var title = response.results[index].title;
       var url = response.results[index].href;
       var img = response.results[index].thumbnail;
+      var ingredients = response.results[index].ingredients;
       $('#recipe-title' + String(i + 1)).text(title);
       $('#recipe-btn' + String(i + 1)).attr('href', url);
       $('#img' + String(i + 1)).attr('src', img);
+      $('#ingredients'+String(i + 1)).text('Ingredients: '+ingredients);
     }
   })
 };
@@ -86,9 +88,11 @@ function retreiveRecipieByIngredients() {
       var title = response.results[index].title;
       var url = response.results[index].href;
       var img = response.results[index].thumbnail;
+      var ingredients = response.results[index].ingredients;
       $('#recipe-title' + String(i + 1)).text(title);
       $('#recipe-btn' + String(i + 1)).attr('href', url);
       $('#img' + String(i + 1)).attr('src', img);
+      $('#ingredients'+String(i + 1)).text('Ingredients: '+ingredients);
     }
   })
 };
@@ -123,9 +127,11 @@ function retreiveRecipieByBoth() {
       var title = response.results[index].title;
       var url = response.results[index].href;
       var img = response.results[index].thumbnail;
+      var ingredients = response.results[index].ingredients;
       $('#recipe-title' + String(i + 1)).text(title);
       $('#recipe-btn' + String(i + 1)).attr('href', url);
       $('#img' + String(i + 1)).attr('src', img);
+      $('#ingredients'+String(i + 1)).text('Ingredients: '+ingredients);
     }
   })
 };
