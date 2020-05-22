@@ -1,19 +1,19 @@
 h1 {
     background: rgba(197, 77, 21, 0.966);
-    color: white;
-    height: 65px;
+    color: #ffffff;
+    height: 100px;
     margin-bottom: 0;
-    padding-top: 13px;
-    padding-bottom: 13px;
+    /* padding-top: 20px;
+    padding-bottom: 20px; */
     font-weight: bolder;
+    font-size: 50px;
     border-top: solid rgba(196, 3, 3, 0.479);
     border-bottom: solid rgba(196, 3, 3, 0.479);
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .title{
-    position: relative;
-    bottom: 6px;
+    margin-top: 20px;
 }
 
 .jumbo {
@@ -25,7 +25,7 @@ h1 {
 
 .screen-width {
     margin-right: 0;
-    margin-top: 57px;
+    margin-top: 50px;
 
 }
 .left {
