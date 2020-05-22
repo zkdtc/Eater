@@ -44,17 +44,24 @@ function retreiveRecipie() {
   $.ajax(settings).done(function (response) {
     response = JSON.parse(response);
 
+    results = response.results;
+    var results2 = [];
+    for (i = 0; i < results.length; i++) {
+      if (results[i].thumbnail) {
+        results2.push(results[i]);
+      }
+    }
 
     for (i = 0; i < 3; i++) {
-      index=Math.floor(Math.random()*response.results.length);
-      var title = response.results[index].title;
-      var url = response.results[index].href;
-      var img = response.results[index].thumbnail;
-      var ingredients = response.results[index].ingredients;
+      index = Math.floor(Math.random() * results2.length);
+      var title = results2[index].title;
+      var url = results2[index].href;
+      var img = results2[index].thumbnail;
+      var ingredients = results2[index].ingredients;
       $('#recipe-title' + String(i + 1)).text(title);
       $('#recipe-btn' + String(i + 1)).attr('href', url);
       $('#img' + String(i + 1)).attr('src', img);
-      $('#ingredients'+String(i + 1)).text('Ingredients: '+ingredients);
+      $('#ingredients' + String(i + 1)).text('Ingredients: ' + ingredients);
     }
   })
 };
@@ -85,17 +92,24 @@ function retreiveRecipieByIngredients() {
   $.ajax(settings).done(function (response) {
     response = JSON.parse(response);
     console.log(response);
+    results = response.results;
+    var results2 = [];
+    for (i = 0; i < results.length; i++) {
+      if (results[i].thumbnail) {
+        results2.push(results[i]);
+      }
+    }
 
     for (i = 0; i < 3; i++) {
-      index=Math.floor(Math.random()*response.results.length);
-      var title = response.results[index].title;
-      var url = response.results[index].href;
-      var img = response.results[index].thumbnail;
-      var ingredients = response.results[index].ingredients;
+      index = Math.floor(Math.random() * results2.length);
+      var title = results2[index].title;
+      var url = results2[index].href;
+      var img = results2[index].thumbnail;
+      var ingredients = results2[index].ingredients;
       $('#recipe-title' + String(i + 1)).text(title);
       $('#recipe-btn' + String(i + 1)).attr('href', url);
       $('#img' + String(i + 1)).attr('src', img);
-      $('#ingredients'+String(i + 1)).text('Ingredients: '+ingredients);
+      $('#ingredients' + String(i + 1)).text('Ingredients: ' + ingredients);
     }
   })
 };
@@ -112,7 +126,7 @@ function retreiveRecipieByBoth() {
   var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "https://recipe-puppy.p.rapidapi.com/?p=1&i=" + $('#ingredients-value').val()+"&q=" + $('#recipe-value').val(),
+    "url": "https://recipe-puppy.p.rapidapi.com/?p=1&i=" + $('#ingredients-value').val() + "&q=" + $('#recipe-value').val(),
     "method": "GET",
     "headers": {
       "x-rapidapi-host": "recipe-puppy.p.rapidapi.com",
@@ -125,17 +139,25 @@ function retreiveRecipieByBoth() {
   $.ajax(settings).done(function (response) {
     response = JSON.parse(response);
     console.log(response);
+    results = response.results;
+    var results2 = [];
+    for (i = 0; i < results.length; i++) {
+      if (results[i].thumbnail) {
+        results2.push(results[i]);
+      }
+    }
+    console.log(results2);
 
     for (i = 0; i < 3; i++) {
-      index=Math.floor(Math.random()*response.results.length);
-      var title = response.results[index].title;
-      var url = response.results[index].href;
-      var img = response.results[index].thumbnail;
-      var ingredients = response.results[index].ingredients;
+      index = Math.floor(Math.random() * results2.length);
+      var title = results2[index].title;
+      var url = results2[index].href;
+      var img = results2[index].thumbnail;
+      var ingredients = results2[index].ingredients;
       $('#recipe-title' + String(i + 1)).text(title);
       $('#recipe-btn' + String(i + 1)).attr('href', url);
       $('#img' + String(i + 1)).attr('src', img);
-      $('#ingredients'+String(i + 1)).text('Ingredients: '+ingredients);
+      $('#ingredients' + String(i + 1)).text('Ingredients: ' + ingredients);
     }
   })
 };
