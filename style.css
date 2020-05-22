@@ -23,7 +23,7 @@ h1 {
     width: auto;
 }
 
-.screen-width {
+.recipe-column {
     margin-right: 0;
     margin-top: 50px;
 
@@ -61,3 +61,13 @@ h1 {
 .card-body {
     float: left;
 }
+
+#search-btn0, #search-btn3 {
+    width: 336.75px;
+}
+
+#ingredients1, #ingredients2, #ingredients3 {
+    font-weight: bold;
+}
+
+

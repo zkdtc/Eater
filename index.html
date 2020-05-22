@@ -31,12 +31,12 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-3 left">
+            <div class="col-md-4 left">
                 <h6 class="enter-calories">
                     <div class="input-group-btn">
-                        <button id="search-btn0"
-                            class="btn btn-danger button" type="submit">
-                            <span>Recommendation According to weather</span>
+                        <button id="search-btn0" class="btn btn-danger button"
+                            type="submit">
+                            <span>Recommendation According to Weather</span>
                         </button>
                     </div>
                 </h6>
@@ -70,16 +70,15 @@
                     </div>
                 </form>
                 <br>
-                <h6 class="enter-calories">Indicate the Calorie Amount:</h6>
-                <div class="d-flex justify-content-center my-4">
-                    <form class="range-field w-75">
-                        <input id="slider1" class="border-0" type="range"
-                            min="20" max="3000" />
-                    </form>
-                    <span
-                        class="font-weight-bold text-danger ml-2 mt-1 valueSpan">
-                        <span>
-                </div>
+                <h6 class="enter-calories">
+                    <div class="input-group-btn">
+                        <button id="search-btn3" class="btn btn-danger button"
+                            type="submit">
+                            <span>Combined Recipe and Ingredients Search</span>
+                        </button>
+                    </div>
+                </h6>
+
                 <br>
                 <br>
                 <h6 class="recent-searches">
@@ -108,70 +107,79 @@
                 </div>
             </div>
 
-            <div class="col-md-8 container-fluid screen-width">
+            <div class="col-md-8 container-fluid recipe-column hide">
                 <h4 id="weather-heading"></h4>
                 <div class="row result">
 
                     <div class="col-md-5">
-                        <img id="img1" src="#" class="card-img recipe-image" alt="#">
+                        <img id="img1" src="#" class="card-img recipe-image"
+                            alt="#">
                     </div>
+
+                    <div class="col-md-7">
                         <div id="option-1">
                             <h5 id="recipe-title1" class="card-title">
                                 Card title
                             </h5>
                             <p id="recipe-description1" class="card-text">
                             </p>
-                            <p id="calorie-amount1" class="card-text">Amount of
-                                Calories:</p>
+                            <p id="ingredients1" class="card-text">Ingredients:
+                            </p>
                             </small>
                             </p>
-                            <a id="recipe-btn1" href="#"
+                            <a id="recipe-btn1" href="#" target="_blank"
                                 class="btn btn-danger recipe-link button">Get
                                 Recipe!</a>
                         </div>
                     </div>
                 </div>
+                <br>
+                <br>
+                <div class="row result">
 
-                <div class="row result card mb-3 row no-gutters">
-
-                    <div class="col-md-4">
-                        <img id="img2" src="#" class="card-img recipe-image" alt="#">
+                    <div class="col-md-5">
+                        <img id="img2" src="#" class="card-img recipe-image"
+                            alt="#">
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-7">
                         <div id="option-2">
                             <h5 id="recipe-title2" class="card-title">
                                 Card title
                             </h5>
                             <p id="recipe-description2" class="card-text">
                             </p>
-                            <p id="calorie-amount2" class="card-text">Amount of
-                                Calories:</p>
+                            <p id="ingredients2" class="card-text">Ingredients:
+                            </p>
                             </small>
                             </p>
-                            <a id="recipe-btn2" href="#"
+                            <a id="recipe-btn2" href="#" target="_blank"
                                 class="btn btn-danger recipe-link button">Get
                                 Recipe!</a>
                         </div>
                     </div>
                 </div>
+                <br>
+                <br>
+                <div class="row result">
 
-                <div class="row result card mb-3 row no-gutters">
+                    <div class="col-md-5">
+                        <img id="img3" src="#" class="card-img recipe-image"
+                            alt="#">
+                    </div>
 
-                    <div class="col-md-4">
-                        <img id="img3" src="#" class="card-img recipe-image" alt="#">
-
+                    <div class="col-md-7">
                         <div id="option-3">
                             <h5 id="recipe-title3" class="card-title">
                                 Card title
                             </h5>
                             <p id="recipe-description3" class="card-text">
                             </p>
-                            <p id="calorie-amount3" class="card-text">Amount of
-                                Calories:</p>
+                            <p id="ingredients3" class="card-text">Ingredients:
+                            </p>
                             </small>
                             </p>
-                            <a id="recipe-btn3" href="#"
+                            <a id="recipe-btn3" href="#" target="_blank"
                                 class="btn btn-danger recipe-link button">Get
                                 Recipe!</a>
                         </div>

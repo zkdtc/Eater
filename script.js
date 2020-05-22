@@ -10,9 +10,10 @@ $(document).ready(function () {
 });
 
 
-
+var recipeColumn = $('.recipe-column')
 var weatherbtn = $('#search-btn0');
 weatherbtn.click(function () {
+  recipeColumn.removeClass('hide');
   getLocation();
 
 })
@@ -21,6 +22,7 @@ weatherbtn.click(function () {
 // Add listner to the 'Search for Recipe button
 $('#search-btn1').on("click", function (event) {
   event.preventDefault();
+  recipeColumn.removeClass('hide');
   retreiveRecipie();
 })
 
@@ -44,12 +46,96 @@ function retreiveRecipie() {
 
 
     for (i = 0; i < 3; i++) {
-      var title = response.results[i].title;
-      var url = response.results[i].href;
-      var img = response.results[i].thumbnail;
+      index=Math.floor(Math.random()*response.results.length);
+      var title = response.results[index].title;
+      var url = response.results[index].href;
+      var img = response.results[index].thumbnail;
+      var ingredients = response.results[index].ingredients;
       $('#recipe-title' + String(i + 1)).text(title);
       $('#recipe-btn' + String(i + 1)).attr('href', url);
       $('#img' + String(i + 1)).attr('src', img);
+      $('#ingredients'+String(i + 1)).text('Ingredients: '+ingredients);
+    }
+  })
+};
+
+
+// Add listner to the 'Search for Recipe button
+$('#search-btn2').on("click", function (event) {
+  event.preventDefault();
+  recipeColumn.removeClass('hide');
+  retreiveRecipieByIngredients();
+})
+
+
+function retreiveRecipieByIngredients() {
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://recipe-puppy.p.rapidapi.com/?p=1&i=" + $('#ingredients-value').val(),
+    "method": "GET",
+    "headers": {
+      "x-rapidapi-host": "recipe-puppy.p.rapidapi.com",
+      "x-rapidapi-key": "69873bfbe3mshc65b70ea31b76c8p14c4e2jsn321f5f41b73a"
+    }
+  }
+
+  // First retrive three meals
+
+  $.ajax(settings).done(function (response) {
+    response = JSON.parse(response);
+    console.log(response);
+
+    for (i = 0; i < 3; i++) {
+      index=Math.floor(Math.random()*response.results.length);
+      var title = response.results[index].title;
+      var url = response.results[index].href;
+      var img = response.results[index].thumbnail;
+      var ingredients = response.results[index].ingredients;
+      $('#recipe-title' + String(i + 1)).text(title);
+      $('#recipe-btn' + String(i + 1)).attr('href', url);
+      $('#img' + String(i + 1)).attr('src', img);
+      $('#ingredients'+String(i + 1)).text('Ingredients: '+ingredients);
+    }
+  })
+};
+
+// Add listner to the 'Search for Recipe button
+$('#search-btn3').on("click", function (event) {
+  event.preventDefault();
+  recipeColumn.removeClass('hide');
+  retreiveRecipieByBoth();
+})
+
+
+function retreiveRecipieByBoth() {
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://recipe-puppy.p.rapidapi.com/?p=1&i=" + $('#ingredients-value').val()+"&q=" + $('#recipe-value').val(),
+    "method": "GET",
+    "headers": {
+      "x-rapidapi-host": "recipe-puppy.p.rapidapi.com",
+      "x-rapidapi-key": "69873bfbe3mshc65b70ea31b76c8p14c4e2jsn321f5f41b73a"
+    }
+  }
+
+  // First retrive three meals
+
+  $.ajax(settings).done(function (response) {
+    response = JSON.parse(response);
+    console.log(response);
+
+    for (i = 0; i < 3; i++) {
+      index=Math.floor(Math.random()*response.results.length);
+      var title = response.results[index].title;
+      var url = response.results[index].href;
+      var img = response.results[index].thumbnail;
+      var ingredients = response.results[index].ingredients;
+      $('#recipe-title' + String(i + 1)).text(title);
+      $('#recipe-btn' + String(i + 1)).attr('href', url);
+      $('#img' + String(i + 1)).attr('src', img);
+      $('#ingredients'+String(i + 1)).text('Ingredients: '+ingredients);
     }
   })
 };
@@ -59,14 +145,9 @@ function retreiveRecipie() {
 
 
 
-
-
-
-
-
 function getLocation() {
   $('#weather-heading').text('');
-  $('#weather-heading').text('Loading');
+  $('#weather-heading').text('Loading...');
   // Make sure browser supports this feature
   if (navigator.geolocation) {
     // Provide our showPosition() function to getCurrentPosition
