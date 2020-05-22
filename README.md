@@ -1,2 +1,2 @@
-# Lorem
+# Eater
 Group Project
