@@ -58,7 +58,6 @@ h1 {
 .recipe-image {
     float: left;
 }
-
-.card body {
+.card-body {
     float: left;
 }
