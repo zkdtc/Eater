@@ -62,6 +62,7 @@ function retreiveRecipie() {
       $('#recipe-btn' + String(i + 1)).attr('href', url);
       $('#img' + String(i + 1)).attr('src', img);
       $('#ingredients' + String(i + 1)).text('Ingredients: ' + ingredients);
+      results2.splice(index, 1);
     }
   })
 };
@@ -110,6 +111,7 @@ function retreiveRecipieByIngredients() {
       $('#recipe-btn' + String(i + 1)).attr('href', url);
       $('#img' + String(i + 1)).attr('src', img);
       $('#ingredients' + String(i + 1)).text('Ingredients: ' + ingredients);
+      results2.splice(index, 1);
     }
   })
 };
@@ -158,6 +160,7 @@ function retreiveRecipieByBoth() {
       $('#recipe-btn' + String(i + 1)).attr('href', url);
       $('#img' + String(i + 1)).attr('src', img);
       $('#ingredients' + String(i + 1)).text('Ingredients: ' + ingredients);
+      results2.splice(index, 1);
     }
   })
 };
