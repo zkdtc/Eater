@@ -31,7 +31,7 @@ h1 {
 .left {
     margin-top: 30px;
     margin-right: 0;
-    padding-right: 0;
+    padding-right: 15px;
 }
 
 .slide {
@@ -63,11 +63,12 @@ h1 {
 }
 
 #search-btn0, #search-btn3 {
-    width: 336.75px;
+    min-width: 300px;
 }
 
-#ingredients1, #ingredients2, #ingredients3 {
-    font-weight: bold;
+#recipe-value, #ingredients-value {
+    max-width: 238.03px;
 }
+
 
 
