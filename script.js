@@ -1,31 +1,84 @@
-$(document).ready(function () {
-
-  const $valueSpan = $('.valueSpan');
-  const $value = $('#slider1');
-  $valueSpan.html($value.val());
-  $value.on('input change', () => {
-
-    $valueSpan.html($value.val());
-  });
-});
-
-
-
+var recipeColumn = $('.recipe-column')
 var weatherbtn = $('#search-btn0');
-weatherbtn.click(function () {
-  getLocation();
 
+weatherbtn.click(function () {
+  $('#weather-heading').text('');
+  $('#weather-heading').text('Loading...');
+  getLocation();
 })
 
+function getLocation() {
+  // Make sure browser supports this feature
+  if (navigator.geolocation) {
+    // Provide our showPosition() function to getCurrentPosition
+    navigator.geolocation.getCurrentPosition(showPosition);
+  }
+  else {
+    alert("Geolocation is not supported by this browser.");
+  }
+}
+
+
+// This will get called after getCurrentPosition()
+function showPosition(position) {
+  // Grab coordinates from the given object
+  var lat = position.coords.latitude;
+  var lon = position.coords.longitude;
+
+  var APIKey = "69299ee3f1473733a3c1d646aa060339";
+  var queryURLWeather = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + APIKey;
+
+  $.ajax({
+    url: queryURLWeather,
+    method: "GET"
+  })
+    .then(function (response) {
+      console.log('response', response);
+
+
+      var temp = parseInt(response.main.temp);
+      var heading = $('#weather-heading');
+      heading.text('');
+      var iconTag = $('<img>');
+      var iconCode = response.weather[0].icon;
+      var icon = iconTag.attr('src', 'http://openweathermap.org/img/wn/' + iconCode + '@2x.png');
+      iconTag.attr('style', 'width:50px; height:50px;');
+
+      var stayWarmArray = ['squash', 'potatoe', 'oats', 'broth', 'hot', 'soup', 'meat', 'chili', 'ginger', 'brown rice', 'garlic', 'coconut oil', 'potatoe', 'roast'];
+      var stayCoolArray = ['cucumber', 'smoothie', 'cold', 'taco', 'avocado', 'melon', 'ice', 'berries', 'salad', 'champagne'];
+
+      if (temp < 68 || temp < 68) {
+        heading.append('Current Temperature is ' + temp + ' \xB0', 'F ');
+        heading.append(icon)
+        heading.append(' Stay Warm With These Recipes:');
+        index = Math.floor(Math.random() * stayWarmArray.length);
+        var warm = stayWarmArray[index];
+        retrieveRecipie(warm);
+        console.log('retrieveRecipie(warm)', retrieveRecipie(warm));
+
+        //split ingredients array in the recipe object(?) if title contents or at ingrediens in recipe object matches 2 an item in the stayWarmArray/stayCoolArray, display the first 3 recipes
+      }
+
+      else {
+        heading.append('Current Temperature is ' + temp + ' \xB0', 'F ');
+        heading.append(icon)
+        heading.append(' Stay Cool With These Recipes:');
+        index = Math.floor(Math.random() * stayCoolArray.length);
+        var cool = stayCoolArray[index];
+        retrieveRecipie(cool);
+        console.log('retrieveRecipie(cool)', retrieveRecipie(cool))
+      }
+    }) 
+}
 
 // Add listner to the 'Search for Recipe button
 $('#search-btn1').on("click", function (event) {
   event.preventDefault();
-  retreiveRecipie();
+  retrieveRecipie();
 })
 
 
-function retreiveRecipie() {
+function retrieveRecipie() {
   var settings = {
     "async": true,
     "crossDomain": true,
@@ -37,7 +90,7 @@ function retreiveRecipie() {
     }
   }
 
-  // First retrive three meals
+  // First retrieve three meals
 
   $.ajax(settings).done(function (response) {
     response = JSON.parse(response);
@@ -50,6 +103,7 @@ function retreiveRecipie() {
       }
     }
 
+    
     for (i = 0; i < 3; i++) {
       index = Math.floor(Math.random() * results2.length);
       var title = results2[index].title;
@@ -62,6 +116,7 @@ function retreiveRecipie() {
       $('#ingredients' + String(i + 1)).text('Ingredients: ' + ingredients);
       results2.splice(index, 1);
     }
+    recipeColumn.removeClass('hide');
   })
 };
 
@@ -69,11 +124,11 @@ function retreiveRecipie() {
 // Add listner to the 'Search for Recipe button
 $('#search-btn2').on("click", function (event) {
   event.preventDefault();
-  retreiveRecipieByIngredients();
+  retrieveRecipieByIngredients();
 })
 
 
-function retreiveRecipieByIngredients() {
+function retrieveRecipieByIngredients() {
   var settings = {
     "async": true,
     "crossDomain": true,
@@ -110,17 +165,18 @@ function retreiveRecipieByIngredients() {
       $('#ingredients' + String(i + 1)).text('Ingredients: ' + ingredients);
       results2.splice(index, 1);
     }
+    recipeColumn.removeClass('hide');
   })
 };
 
 // Add listner to the 'Search for Recipe button
 $('#search-btn3').on("click", function (event) {
   event.preventDefault();
-  retreiveRecipieByBoth();
+  retrieveRecipieByBoth();
 })
 
 
-function retreiveRecipieByBoth() {
+function retrieveRecipieByBoth() {
   var settings = {
     "async": true,
     "crossDomain": true,
@@ -132,7 +188,7 @@ function retreiveRecipieByBoth() {
     }
   }
 
-  // First retrive three meals
+  // First retrieve three meals
 
   $.ajax(settings).done(function (response) {
     response = JSON.parse(response);
@@ -158,87 +214,10 @@ function retreiveRecipieByBoth() {
       $('#ingredients' + String(i + 1)).text('Ingredients: ' + ingredients);
       results2.splice(index, 1);
     }
+    recipeColumn.removeClass('hide');
   })
 };
 
-
-
-
-
-
-function getLocation() {
-  $('#weather-heading').text('');
-  $('#weather-heading').text('Loading');
-  // Make sure browser supports this feature
-  if (navigator.geolocation) {
-    // Provide our showPosition() function to getCurrentPosition
-    navigator.geolocation.getCurrentPosition(showPosition);
-  }
-  else {
-    alert("Geolocation is not supported by this browser.");
-  }
-}
-
-
-
-
-
-
-// This will get called after getCurrentPosition()
-function showPosition(position) {
-  // Grab coordinates from the given object
-  console.log(position);
-  var lat = position.coords.latitude;
-  var lon = position.coords.longitude;
-  console.log("Your coordinates are Latitude: " + lat + " Longitude " + lon);
-
-  var APIKey = "69299ee3f1473733a3c1d646aa060339";
-  var queryURLWeather = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + APIKey;
-
-  $.ajax({
-    url: queryURLWeather,
-    method: "GET"
-  })
-    .then(function (response) {
-      console.log('response', response);
-
-
-      var temp = parseInt(response.main.temp);
-      var feelsLikeTemp = parseInt(response.main.feels_like);
-      var heading = $('#weather-heading');
-      heading.text('');
-      var weatherRecipeDiv = $('.weather-div');
-      var iconTag = $('<img>');
-      var iconCode = response.weather[0].icon;
-      var icon = iconTag.attr('src', 'http://openweathermap.org/img/wn/' + iconCode + '@2x.png');
-      iconTag.attr('style', 'width:50px; height:50px;');
-
-      var stayWarmArray = ['squash', 'potatoe', 'oats', 'broth', 'soup', 'meat', 'chili', 'ginger', 'brown rice', 'garlic', 'coconut oil'];
-      var stayCoolArray = ['cucumber', 'watermelon', 'smoothie', 'apple', 'pineapple', 'orange', 'avocado', 'melon', 'grapes', 'berries'];
-      console.log(temp);
-      console.log(feelsLikeTemp);
-
-      if (temp < 68 || feelsLikeTemp < 68) {
-        heading.append('Your Curent Temperature is ' + temp + ' \xB0', 'F ');
-        heading.append(icon)
-        heading.append(' Chilly. Stay Warm With These Recipes:');
-        index = Math.floor(Math.random() * stayWarmArray.length);
-        $('#recipe-value').val(stayWarmArray[index]);
-        retreiveRecipie();
-
-        //split ingredients array in the recipe object(?) if title contents or at ingrediens in recipe object matches 2 an item in the stayWarmArray/stayCoolArray, display the first 3 recipes
-
-      }
-      else {
-        heading.append('Your Curent Temperature is ' + temp + ' \xB0', 'F ');
-        heading.append(icon)
-        heading.append('Warm... Stay cool With These Recipes:');
-        index = Math.floor(Math.random() * stayCoolarray.length);
-        $('#recipe-value').val(stayCoolArray[index]);
-        retreiveRecipie();
-      }
-    })
-}
 
 var clicky = document.querySelector("#search-btn1")
 var searches = document.querySelector("#recipe-value")
