@@ -2,7 +2,7 @@ var recipeColumn = $('.recipe-column')
 var weatherbtn = $('#search-btn0');
 
 weatherbtn.click(function () {
-  $('#weather-heading').text('');
+  $('.recipe-column').removeClass('hide');
   $('#weather-heading').text('Loading...');
   getLocation();
 })
@@ -33,9 +33,6 @@ function showPosition(position) {
     method: "GET"
   })
     .then(function (response) {
-      console.log('response', response);
-
-
       var temp = parseInt(response.main.temp);
       var heading = $('#weather-heading');
       heading.text('');
@@ -47,16 +44,13 @@ function showPosition(position) {
       var stayWarmArray = ['squash', 'potatoe', 'oats', 'broth', 'hot', 'soup', 'meat', 'chili', 'ginger', 'brown rice', 'garlic', 'coconut oil', 'potatoe', 'roast'];
       var stayCoolArray = ['cucumber', 'smoothie', 'cold', 'taco', 'avocado', 'melon', 'ice', 'berries', 'salad', 'champagne'];
 
-      if (temp < 68 || temp < 68) {
+      if (temp < 68) {
         heading.append('Current Temperature is ' + temp + ' \xB0', 'F ');
         heading.append(icon)
         heading.append(' Stay Warm With These Recipes:');
         index = Math.floor(Math.random() * stayWarmArray.length);
         var warm = stayWarmArray[index];
         retrieveRecipie(warm);
-        console.log('retrieveRecipie(warm)', retrieveRecipie(warm));
-
-        //split ingredients array in the recipe object(?) if title contents or at ingrediens in recipe object matches 2 an item in the stayWarmArray/stayCoolArray, display the first 3 recipes
       }
 
       else {
@@ -66,7 +60,6 @@ function showPosition(position) {
         index = Math.floor(Math.random() * stayCoolArray.length);
         var cool = stayCoolArray[index];
         retrieveRecipie(cool);
-        console.log('retrieveRecipie(cool)', retrieveRecipie(cool))
       }
     }) 
 }
@@ -74,15 +67,16 @@ function showPosition(position) {
 // Add listner to the 'Search for Recipe button
 $('#search-btn1').on("click", function (event) {
   event.preventDefault();
+  $('#weather-heading').addClass('hide');
   retrieveRecipie();
 })
 
 
-function retrieveRecipie() {
+function retrieveRecipie(search) {
   var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "https://recipe-puppy.p.rapidapi.com/?p=1&q=" + $('#recipe-value').val(),
+    "url": "https://recipe-puppy.p.rapidapi.com/?p=1&q=" + ($('#recipe-value').val() || search),
     "method": "GET",
     "headers": {
       "x-rapidapi-host": "recipe-puppy.p.rapidapi.com",
@@ -103,7 +97,6 @@ function retrieveRecipie() {
       }
     }
 
-    
     for (i = 0; i < 3; i++) {
       index = Math.floor(Math.random() * results2.length);
       var title = results2[index].title;
@@ -116,7 +109,7 @@ function retrieveRecipie() {
       $('#ingredients' + String(i + 1)).text('Ingredients: ' + ingredients);
       results2.splice(index, 1);
     }
-    recipeColumn.removeClass('hide');
+    $('.result').removeClass('hide');
   })
 };
 
@@ -144,7 +137,6 @@ function retrieveRecipieByIngredients() {
 
   $.ajax(settings).done(function (response) {
     response = JSON.parse(response);
-    console.log(response);
     results = response.results;
     var results2 = [];
     for (i = 0; i < results.length; i++) {
@@ -165,7 +157,7 @@ function retrieveRecipieByIngredients() {
       $('#ingredients' + String(i + 1)).text('Ingredients: ' + ingredients);
       results2.splice(index, 1);
     }
-    recipeColumn.removeClass('hide');
+    $('.result').removeClass('hide');
   })
 };
 
@@ -192,7 +184,6 @@ function retrieveRecipieByBoth() {
 
   $.ajax(settings).done(function (response) {
     response = JSON.parse(response);
-    console.log(response);
     results = response.results;
     var results2 = [];
     for (i = 0; i < results.length; i++) {
@@ -200,7 +191,6 @@ function retrieveRecipieByBoth() {
         results2.push(results[i]);
       }
     }
-    console.log(results2);
 
     for (i = 0; i < 3; i++) {
       index = Math.floor(Math.random() * results2.length);
@@ -214,7 +204,7 @@ function retrieveRecipieByBoth() {
       $('#ingredients' + String(i + 1)).text('Ingredients: ' + ingredients);
       results2.splice(index, 1);
     }
-    recipeColumn.removeClass('hide');
+    $('.result').removeClass('hide');
   })
 };
 

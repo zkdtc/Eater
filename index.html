@@ -17,16 +17,14 @@
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
         crossorigin="anonymous">
-
     <link rel="stylesheet" href="style.css">
-
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 
 <body>
     <header class="jumbo">
-        <h1 class="text-center">
-            <div class="title">Eater</div>
-        </h1>
+        <h1 class="text-center title">Eater
+            <i class="fa fa-teeth-open"></i><p id='motto'>recipes guided by weather and creativity</p></h1>
     </header>
 
     <div class="container-fluid">
@@ -36,11 +34,12 @@
                     <div class="input-group-btn">
                         <button id="search-btn0" class="btn btn-danger button"
                             type="submit">
-                            <span>Recommendation According to Weather</span>
+                            <span>Recommendation by Weather </span><i
+                                class="fas fa-cloud-sun"></i>
                         </button>
                     </div>
                 </h6>
-                <br>
+
                 <h6 class="search-for-recipe">Search for a Recipe:</h6>
                 <form>
                     <div class="input-group">
@@ -49,7 +48,7 @@
                         <div class="input-group-btn">
                             <button id="search-btn1"
                                 class="btn btn-danger button" type="submit">
-                                <span>Search</span>
+                                <i class="fa fa-search"></i>
                             </button>
                         </div>
                     </div>
@@ -64,7 +63,7 @@
                         <div class="input-group-btn">
                             <button id="search-btn2"
                                 class="btn btn-danger button" type="submit">
-                                <span>Search</span>
+                                <i class="fa fa-search"></i>
                             </button>
                         </div>
                     </div>
@@ -74,7 +73,8 @@
                     <div class="input-group-btn">
                         <button id="search-btn3" class="btn btn-danger button"
                             type="submit">
-                            <span>Combined Recipe and Ingredients Search</span>
+                            <span>Combine Recipe with Ingredients </span><i
+                                class="fa fa-search"></i>
                         </button>
                     </div>
                 </h6>
@@ -109,9 +109,9 @@
                 </div>
             </div>
 
-            <div class="col-lg-8 container-fluid recipe-column hide">
+            <div class="col-lg-8 container-fluid recipe-column">
                 <h4 id="weather-heading"></h4>
-                <div class="row result">
+                <div class="row result hide">
 
                     <div class="col-md-5">
                         <img id="img1" src="#" class="card-img recipe-image"
@@ -137,7 +137,7 @@
                 </div>
                 <br>
                 <br>
-                <div class="row result">
+                <div class="row result hide">
 
                     <div class="col-md-5">
                         <img id="img2" src="#" class="card-img recipe-image"
@@ -163,7 +163,7 @@
                 </div>
                 <br>
                 <br>
-                <div class="row result">
+                <div class="row result hide">
 
                     <div class="col-md-5">
                         <img id="img3" src="#" class="card-img recipe-image"
