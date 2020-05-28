@@ -226,7 +226,6 @@ clicky.addEventListener("click", recentSearchList)
 
 
 
-
 function recentSearchList() {
   var searchString = searches.value
 
@@ -237,11 +236,8 @@ function recentSearchList() {
   else {
     recentItems = JSON.parse(recentItems)
   }
-  if (recentItems.indexOf(searchString) != -1){
-    return
-  }
-  recentItems.push(searchString)
 
+  recentItems.push(searchString)
   while (recentItems.length > 10) {
     recentItems.shift()
   }
@@ -263,13 +259,9 @@ function updateRecentSearches() {
     button.textContent = element
     var br = document.createElement("br")
     button.setAttribute("class", "btn btn-danger button m-2")
-    button.addEventListener("click", updateRecentItemsUI)
     storedKeywords.prepend(br)
     storedKeywords.prepend(button)
   }
 }
-function updateRecentItemsUI(event){
-  var finalStep = event.target.textContent
-  retreiveRecipie(finalStep)
-}
 updateRecentSearches()
+
