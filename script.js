@@ -41,7 +41,7 @@ function showPosition(position) {
       heading.text('');
       var iconTag = $('<img>');
       var iconCode = response.weather[0].icon;
-      var icon = iconTag.attr('src', 'http://openweathermap.org/img/wn/' + iconCode + '@2x.png');
+      var icon = iconTag.attr('src', 'https://openweathermap.org/img/wn/' + iconCode + '@2x.png');
       iconTag.attr('style', 'width:50px; height:50px;');
 
       var stayWarmArray = ['squash', 'potatoe', 'oats', 'broth', 'hot', 'soup', 'meat', 'chili', 'ginger', 'brown rice', 'garlic', 'coconut oil', 'potatoe', 'roast'];
