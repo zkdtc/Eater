@@ -26,7 +26,7 @@ function showPosition(position) {
   var lon = position.coords.longitude;
 
   var APIKey = "69299ee3f1473733a3c1d646aa060339";
-  var queryURLWeather = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + APIKey;
+  var queryURLWeather = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + APIKey;
 
   $.ajax({
     url: queryURLWeather,
